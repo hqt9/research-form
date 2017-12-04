@@ -1,0 +1,157 @@
+<link rel="stylesheet" type="text/css" href="./css/reset.css" media="all">
+
+<style type="text/css">
+        .phone-all img {width: 100%;height: auto;}
+        .phone-all .clearfix:after { content: ''; display: table; clear: both; }
+        .phone-all {width: 100%; margin: 0 auto;}
+        .phone-all .phone-border {position: relative;text-align: center; overflow: hidden;width: 100%; }
+        .phone-all .phone-border .scroll-left {position: absolute;top: 45%; left: 10px;width: 20px;height: 20px;line-height: 20px;background: #351611;color: #fff;cursor: pointer; }
+        .phone-all .phone-border .scroll-right {position: absolute;top: 45%; right: 10px;width: 20px;height: 20px;line-height: 20px;background: #351611;color: #fff;cursor: pointer; }
+        .phone-all .phone-border:first-child {margin-top: -20px;position: relative;}
+        .phone-all .phone-content {position: absolute;bottom: 10px;width: 100%;text-align: center;font-family: "times new roman";font-style: oblique;}
+        .phone-all .phone-content a {padding: 0 4%;color: #351611;}
+        .phone-all .photo-list {float: left;box-sizing: border-box;padding: 8px; }
+        .phone-all .photo-list.active img {border-bottom: 0px solid #f00; }
+        .phone-all .photo-locator {margin-bottom: 50px;font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;}
+        .phone-border  li {text-indent: -9999px; background: #ccc;width: 12px; height: 12px;float: left;margin: 0 5px;border-radius: 100%; }
+        .phone-border  li.on {background-color: #f00; }
+</style>
+<div class="phone-all">
+    <div class="phone-border" style=""><a href="config path="web/secure/base_url"en/scan-buy.html"><img alt="" src="./images/pic1.jpg"" /></a>
+        <div class="phone-content"><a href="config path="web/secure/base_url"en/scan-buy.html">Men's scarves</a> <a href="config path="web/secure/base_url"en/scan-buy.html">Women's scarves</a></div>
+    </div>
+    <div class="phone-border" style=""><a href="config path="web/secure/base_url"en/scan-buy.html"><img alt="" src="./images/pic2.jpg"" /></a>
+        <div class="phone-content"><a href="config path="web/secure/base_url"en/scan-buy.html">Find out more</a></div>
+    </div>
+    <div class="phone-border" style=""><a href="config path="web/secure/base_url"en/scan-buy.html"><img alt="" src="./images/pic3.jpg"" /></a>
+        <div class="phone-content"><a href="config path="web/secure/base_url"en/scan-buy.html">Shop women</a> <a href="config path="web/secure/base_url"en/scan-buy.html">Shop men</a></div>
+    </div>
+    <div class="phone-border" style=""><a href="config path="web/secure/base_url"en/scan-buy.html"><img alt="" src="./images/pic4.jpg"" /></a>
+        <div class="phone-content"><a href="config path="web/secure/base_url"en/scan-buy.html">Men's scarves</a> <a href="config path="web/secure/base_url"en/scan-buy.html">Women's scarves</a></div>
+    </div>
+    <div class="phone-border">
+        <div class="clearfix">
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic1.jpg"" /></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic2.jpg"" /></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic3.jpg"" /></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic4.jpg"" /></a></div>
+        </div>
+        <ul style="position: absolute;bottom: 10px;left: 43%; display: none; ">
+            <li class="on">0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="scroll-left"><</div>
+        <div class="scroll-right">></div>
+    </div>
+    <div class="phone-border" style=""><img alt="" src="./images/bottom.jpg"" />
+        <div style="margin-top: 18px;"><i class="iconfont icon-location"></i></div>
+        <div class="photo-locator"><span>STORE LOCATOR</span></div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload=function(){
+        var photo_border = document.querySelector('.phone-border');
+        var photo_clearfix = document.querySelector('.clearfix');
+
+        var photo_list = document.querySelectorAll('.photo-list');
+        // console.log(photo_list);
+
+        var len = photo_list.length;
+        // console.log(len);
+
+        var li_sum = document.querySelectorAll('.phone-border ul li');
+        // console.log(li_sum);
+
+        photo_clearfix.innerHTML = photo_clearfix.innerHTML + photo_clearfix.innerHTML + photo_clearfix.innerHTML;
+
+        var photo_border_width = photo_border.clientWidth;
+        // console.log(photo_border_width);
+
+        var move_distance = photo_border_width/4;
+        // console.log(move_distance);
+
+        var photo_lists = document.querySelectorAll('.photo-list');
+        // console.log(photo_lists);
+        photo_lists[0].classList.add('active');
+
+
+        for (var i=0; i<photo_lists.length; i++) {
+            photo_lists[i].style.width = photo_border_width/4 + 'px';
+        }
+        photo_clearfix.style.width = photo_border_width/4 * photo_lists.length + 'px';
+        photo_clearfix.style.marginLeft = -photo_border_width + 'px';
+
+
+        document.querySelector('.scroll-left').onclick = function(){
+            var photo_clearfix_marginLeft = parseInt(photo_clearfix.style.marginLeft);
+            // console.log(photo_clearfix_marginLeft);
+
+            photo_clearfix.style.marginLeft = (photo_clearfix_marginLeft + move_distance) + 'px';
+            // console.log(photo_clearfix.style.marginLeft);
+
+            if (photo_clearfix_marginLeft >= 0) {
+                photo_clearfix.style.marginLeft = -photo_border_width/4*3 + 'px';
+                return;
+            }
+        }
+
+
+        document.querySelector('.scroll-right').onclick = function(){
+            var photo_clearfix_marginLeft = parseInt(photo_clearfix.style.marginLeft);
+            // console.log(photo_clearfix_marginLeft);
+
+            var right_limit = -photo_border_width/4*8;
+            // console.log(right_limit);
+
+            var rightMargin = photo_clearfix_marginLeft - move_distance
+
+            photo_clearfix.style.marginLeft = rightMargin + 'px';
+            // console.log(photo_clearfix.style.marginLeft);
+
+            if (rightMargin < right_limit) {
+                photo_clearfix.style.marginLeft = -photo_border_width/4*5 + 'px';
+                return;
+            }
+        }
+
+        // for (var i=0; i<li_sum.length; i++) {
+        //     li_sum[i].onmouseover = function(){
+        //         clearInterval(timeId);
+        //         // console.log(this.innerText);
+        //         show(this.innerText);
+        //     }
+
+        //     li_sum[i].onmouseout = function(){
+        //         autoplay();
+        //     }
+        // }
+
+        // function show(n){
+
+        //     console.log(n);
+
+        //     for(var j=0; j<(li_sum.length); j++){
+        //         if(j==n){
+        //             li_sum[j].className='on';
+        //             photo_lists[j].classList.add('active');
+        //         }else{
+        //             li_sum[j].className='';
+        //             photo_lists[j].classList.remove('active');
+        //         }
+
+        //     }
+        // }
+
+        // function autoplay(){
+        //     var count = 1;
+        //     timeId = setInterval(function(){
+        //         show(count % 4 );
+        //         count++;
+        //     }, 3000);
+        // }
+
+        // autoplay();
+    }
+</script>
