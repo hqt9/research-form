@@ -1,0 +1,75 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style type="text/css">
+    	table {text-align: center; }
+    	table th {width: 150px; }
+    </style>
+</head>
+<body>
+
+<form> 
+Select a User:
+<select name="users" onchange="showUser(this.value)">
+<option value="" selected>Please Select</option>
+<option value="1">Peter Griffin</option>
+<option value="2">Lois Griffin</option>
+<option value="3">Glenn Quagmire</option>
+<option value="4">Joseph Swanson</option>
+</select>
+</form>
+<div id="txtHint"><b>User info will be listed here.</b></div>
+
+</body>
+<script type="text/javascript">
+	$ = jQuery.noConflict();
+
+	function showUser(str) { 
+		// var str = str;
+	 	// document.getElementById("txtHint").innerHTML=str;
+
+		var xmlHttp = GetXmlHttpObject();
+
+		if (xmlHttp == null) {
+			alert ("Browser does not support HTTP Request");
+			return;
+		}
+
+		if (str.length == 0) {
+			document.getElementById("txtHint").innerHTML = '<b>User info will be listed here.</b>';
+	 		// $("#txtHint").html("");
+	    	return;
+	  	}
+
+		var url = "./getuser.php";
+		url = url + "?q=" + str;
+		url = url + "&sid=" + Math.random();
+
+		xmlHttp.onreadystatechange = function(){
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+				document.getElementById("txtHint").innerHTML = xmlHttp.responseText;
+				// $('#txtHint').text(xmlHttp.responseText);
+		 	}
+		}
+
+		xmlHttp.open("GET",'./getuser.php?q=' + str,true);
+		xmlHttp.send();
+	}
+
+	function GetXmlHttpObject() {
+		var xmlHttp=null;
+		try { 			// Firefox, Opera 8.0+, Safari
+	 		xmlHttp=new XMLHttpRequest();
+	 	} catch (e) { 	//Internet Explorer
+	 		try {
+	  			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+	  		} catch (e) {
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+	 	}
+		return xmlHttp;
+	}
+
+</script>
+</html>
