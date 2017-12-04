@@ -1,0 +1,64 @@
+@font-face {
+ font-family:"Times Ten LT W05";
+ src:url("//common.static.burberry.com/fonts/v3/TimesTen-Web/TimesTenLTW05-Roman.eot");
+ src:url("//common.static.burberry.com/fonts/v3/TimesTen-Web/TimesTenLTW05-Roman.eot?#iefix") format("embedded-opentype"), url("//common.static.burberry.com/fonts/v3/TimesTen-Web/TimesTenLTW05-Roman.woff") format("woff"), url("//common.static.burberry.com/fonts/v3/TimesTen-Web/TimesTenLTW05-Roman.ttf") format("truetype"), url("//common.static.burberry.com/fonts/v3/TimesTen-Web/TimesTenLTW05-Roman.svg#Times Ten LT W05") format("svg");
+ font-style:normal;
+ font-weight:normal;
+ -webkit-font-smoothing:antialiased;
+}
+
+@font-face {
+    font-family: "Proxima N W08";
+    src: url("//common.static.burberry.com/fonts/v3/Proxima-Web/ProximaNovaW08-Regular.eot");
+    src: url("//common.static.burberry.com/fonts/v3/Proxima-Web/ProximaNovaW08-Regular.eot?#iefix") format("embedded-opentype"), url("//common.static.burberry.com/fonts/v3/Proxima-Web/ProximaNovaW08-Regular.woff") format("woff"), url("//common.static.burberry.com/fonts/v3/Proxima-Web/ProximaNovaW08-Regular.ttf") format("truetype"), url("//common.static.burberry.com/fonts/v3/Proxima-Web/ProximaNovaW08-Regular.svg#Proxima N W08") format("svg");
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing:antialiased;}
+
+.fl { float: left; } 
+.fr { float: right; } 
+.clear { clear: both; } 
+.clearfix:after { content: ''; display: table; clear: both; } 
+.required:after {content: '*';color: #e54954;vertical-align: sub;}
+
+.font-one {font: 700 24px/42px "Proxima N W08", Arial, Helvetica, Sans-serif;color: #333;}
+.font-two {font: 700 15px/26px "Proxima N W08", Arial, Helvetica, Sans-serif;color: #333;}
+.font-three {font: 15px/26px "Proxima N W08", Arial, Helvetica, Sans-serif;color: #333;}
+.margin-right {margin-right: 15px;}
+.inline-block {display: inline-block;}
+.div-height {height: 50px;}
+.color-gray {color: gray;}
+.research-header {text-align: center;padding:20px 0;}
+.phone-header{display: none;}
+
+.research-bg {background-color: #f6f7fb;}
+.research-bg .research-one {max-width: 1200px;margin: 0 auto;padding: 40px 0;}
+.research-one .research-reset {cursor: pointer;border: 0;background-color: #fff;width: 80px;height: 35px;border-radius: 20px;}
+.research-one span {padding-left: 22px;line-height: 2.4em;}
+.research-one .research-save {cursor: pointer;border: 0;background-color: #f63;color: #fff;width: 80px;height: 35px;border-radius: 20px;}
+
+.research-bg .research-two {max-width: 1000px;margin: 0 auto;}
+.research-two .research-your {padding-bottom: 40px;background-color: #ffe9db;border-radius: 5px;margin-bottom: 50px; }
+.research-two .research-your:last-child {margin-bottom: 0; }
+.research-two .research-your h2 {text-align: center;padding: 30px 0;}
+.research-two .h-border {width: 60px;border-top: 2px solid #f63;margin: 0 auto;padding-bottom: 60px;}
+
+.research-two .research-your li {padding: 10px 100px 10px 150px;border-radius: 5px;}
+
+.research-two .research-your .research-input {width: 250px;padding-left: 5px; border-radius: 5px;font: 13px/26px "Proxima N W08", Arial, Helvetica, Sans-serif;border: 1px solid transparent; }
+.research-two .input-text {display: inline-block;}
+.research-two .input-text .label {float: left;width: 190px;}
+.research-two .other-specific {width: 150px;background-color: #ffe9db;border-bottom: 1px solid #c1b7b7; padding-left: 5px; border-radius: 5%;font: 15px/26px "Proxima N W08", Arial, Helvetica, Sans-serif;}
+
+.research-two .research-submit {padding: 50px 0;text-align: center;}
+.research-two .research-submit .research-submit-button {margin:0 auto;border: 1px solid #999;background-color: #f63;color: #fff;width: 150px;height: 50px;border-radius: 40px;cursor: pointer;}
+.research-submit-button a {font: 700 16px/46px "Proxima N W08", Arial, Helvetica, Sans-serif;}
+.research-submit-button .button-arrow {width: 20px;height: 20px;background-color: #fff;display: inline-block;border-radius: 20px;}
+
+.money-select {border: none;width: 100px;height: 40px;border-radius: 5px;vertical-align: middle;}
+.money-select-margin {margin-left: 45px;margin-bottom: 50px; }
+.number-select {background-color: #ffe9db;border-bottom: 2px solid #fff;width: 150px;height: 60px;text-align: center;}
+.number-select::placeholder {font-size: 14px;}
+.budget-line {display: inline-block;width: 70px;border-bottom: 2px solid black;}
+
+

@@ -1,0 +1,11 @@
+
+.phone-header {display: inherit;text-align: center; padding: 10px 0;}
+.research-header {display: none;}
+.research-bg .research-one {max-width:350px;margin: 0 auto;padding: 10px 0;}
+.industry-other {display: block;}
+.research-two .research-your li {padding-left: 30px;}
+.money-select {display: block;margin-left: 105px;}
+.money-select-margin {margin-left: 55px;}
+.number-select {width: 80px;}
+.budget-line {width: 20px;}
+.color-gray {display: block;}
