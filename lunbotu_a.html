@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title>Bootstrap 实例 - 简单的轮播（Carousel）插件</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+    .carousel-indicators {background-color: transparent; }
+    .carousel-inner {width: 100%; }
+    .carousel-inner .item-one {width: 100%; height: 500px;background-color: #9fb8ed; }
+    .carousel-inner .item-two {width: 100%; height: 500px;background-color: #609d8e; }
+    .carousel-inner .item-three {width: 100%; height: 500px;background-color: #b0ad8f; }
+    .carousel-inner .item-four {width: 100%; height: 500px;background-color: #aa6dba; }
+    .carousel-inner .item img {width: 100%; }
+</style>
+<body>
+
+<div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>   
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item item-one active">
+            <img src="./images/a1.jpg" alt="First slide">
+        </div>
+        <div class="item item-two">
+            <img src="./images/2a.jpg" alt="Second slide">
+        </div>
+        <div class="item item-three">
+            <img src="./images/3a.jpg" alt="Third slide">
+        </div>
+        <div class="item item-four">
+            <img src="./images/4a.jpg" alt="Fourth slide">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel" 
+       data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" 
+       data-slide="next">&rsaquo;</a>
+</div> 
+
+</body>
+</html>
