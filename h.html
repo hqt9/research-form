@@ -1,10 +1,11 @@
 <link rel="stylesheet" type="text/css" href="./css/reset.css" media="all">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style type="text/css">
         .phone-all img {width: 100%;height: auto;}
         .phone-all .clearfix:after { content: ''; display: table; clear: both; }
         .phone-all {width: 100%; margin: 0 auto;}
-        .phone-all .phone-border {position: relative;text-align: center; overflow: hidden;width: 100%; }
+        .phone-all .phone-border {position: relative;text-align: center; overflow: hidden;width: 100%;margin: 0 auto;}
         .phone-all .phone-border .scroll-left {position: absolute;top: 45%; left: 10px;width: 20px;height: 20px;line-height: 20px;background: #351611;color: #fff;cursor: pointer; }
         .phone-all .phone-border .scroll-right {position: absolute;top: 45%; right: 10px;width: 20px;height: 20px;line-height: 20px;background: #351611;color: #fff;cursor: pointer; }
         .phone-all .phone-border:first-child {margin-top: -20px;position: relative;}
@@ -31,17 +32,11 @@
     </div>
     <div class="phone-border">
         <div class="clearfix">
-            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic1.jpg"" /></a></div>
-            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic2.jpg"" /></a></div>
-            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic3.jpg"" /></a></div>
-            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic4.jpg"" /></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic1.jpg"/></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic2.jpg"/></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic3.jpg"/></a></div>
+            <div class="photo-list"><a href="config path="web/secure/base_url"en/scan-buy/basic-cashmere-cardigan-round-neck-w172-en-1.html"><img alt="" src="./images/foot-pic4.jpg"/></a></div>
         </div>
-        <ul style="position: absolute;bottom: 10px;left: 43%; display: none; ">
-            <li class="on">0</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
         <div class="scroll-left"><</div>
         <div class="scroll-right">></div>
     </div>
@@ -84,74 +79,83 @@
         photo_clearfix.style.marginLeft = -photo_border_width + 'px';
 
 
+        // 鼠标悬浮 停止自动播放
+        $ = jQuery.noConflict();
+        $('.scroll-right, .scroll-left').mouseover(function(){
+            clearInterval(timeId);
+        });
+
+        // 鼠标移出 开始自动播放
+        $('.scroll-right, .scroll-left').mouseout(function(){
+            autoPlay();
+        });
+
+        //添加 左 点击事件
         document.querySelector('.scroll-left').onclick = function(){
             var photo_clearfix_marginLeft = parseInt(photo_clearfix.style.marginLeft);
             // console.log(photo_clearfix_marginLeft);
-
-            photo_clearfix.style.marginLeft = (photo_clearfix_marginLeft + move_distance) + 'px';
-            // console.log(photo_clearfix.style.marginLeft);
-
             if (photo_clearfix_marginLeft >= 0) {
-                photo_clearfix.style.marginLeft = -photo_border_width/4*3 + 'px';
+                photo_clearfix.style.marginLeft = -photo_border_width + 'px';
+                stepLeft(-photo_border_width);
                 return;
             }
+            stepLeft(photo_clearfix_marginLeft);
         }
 
-
+        //添加 右 点击事件
         document.querySelector('.scroll-right').onclick = function(){
             var photo_clearfix_marginLeft = parseInt(photo_clearfix.style.marginLeft);
             // console.log(photo_clearfix_marginLeft);
-
-            var right_limit = -photo_border_width/4*8;
+            var right_limit = -photo_border_width/4*8;  //向右偏移最大 -margin
             // console.log(right_limit);
-
-            var rightMargin = photo_clearfix_marginLeft - move_distance
-
-            photo_clearfix.style.marginLeft = rightMargin + 'px';
-            // console.log(photo_clearfix.style.marginLeft);
-
+            var rightMargin = photo_clearfix_marginLeft - move_distance;  //当前 margin 减去 移动距离
+            // console.log(rightMargin);
             if (rightMargin < right_limit) {
-                photo_clearfix.style.marginLeft = -photo_border_width/4*5 + 'px';
+                photo_clearfix.style.marginLeft = -photo_border_width + 'px';
+                stepRight(-photo_border_width);
                 return;
             }
+            stepRight(photo_clearfix_marginLeft);
         }
 
-        // for (var i=0; i<li_sum.length; i++) {
-        //     li_sum[i].onmouseover = function(){
-        //         clearInterval(timeId);
-        //         // console.log(this.innerText);
-        //         show(this.innerText);
-        //     }
+        function stepLeft(value){
+            var step = 1;
+            var timer = setInterval(function(){
+                var distance = 0.05 * step * move_distance;
+                photo_clearfix.style.marginLeft = (value + distance) + 'px';
+                step++;
+                if (step > 20) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
 
-        //     li_sum[i].onmouseout = function(){
-        //         autoplay();
-        //     }
-        // }
+        function stepRight(value){
+            var step = 1;
+            var timer = setInterval(function(){
+                var distance = 0.05 * step * move_distance;
+                photo_clearfix.style.marginLeft = (value - distance) + 'px';
+                step++;
+                if (step > 20) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
 
-        // function show(n){
+        function autoPlay(){
+            timeId = setInterval(function(){
+                var photo_clearfix_marginLeft = parseInt(photo_clearfix.style.marginLeft);
+                var right_limit = -photo_border_width/4*8;
+                var rightMargin = photo_clearfix_marginLeft - move_distance
+                if (rightMargin < right_limit) {
+                    photo_clearfix.style.marginLeft = -photo_border_width + 'px';
+                    stepRight(-photo_border_width);
+                    return;
+                }
+                stepRight(photo_clearfix_marginLeft);
+            }, 3000);
+        }
 
-        //     console.log(n);
-
-        //     for(var j=0; j<(li_sum.length); j++){
-        //         if(j==n){
-        //             li_sum[j].className='on';
-        //             photo_lists[j].classList.add('active');
-        //         }else{
-        //             li_sum[j].className='';
-        //             photo_lists[j].classList.remove('active');
-        //         }
-
-        //     }
-        // }
-
-        // function autoplay(){
-        //     var count = 1;
-        //     timeId = setInterval(function(){
-        //         show(count % 4 );
-        //         count++;
-        //     }, 3000);
-        // }
-
-        // autoplay();
+        autoPlay();
     }
 </script>
