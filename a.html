@@ -30,8 +30,8 @@
 		<div class="page">
 			<div class="one">
 				<div class="content">1</div>
-				<div><button class="btn">submit1</button></div>
-				<div class="two"><div style="padding: 10px;padding-top: 50px;">555555555</div></div>
+				<div><button class="btn">左右切换</button></div>
+				<div class="two"><div style="padding: 10px;padding-top: 50px;">左右切换</div></div>
 				<div style="width: 100%; ">
 					<form name="test-form" id="test-form" method="post" action="#">
 						<div class="first-div"><label>name: </label><input type="text" name="name" class="input-text" placeholder="name" onkeyup="showHint(this.value)"></div>
@@ -45,7 +45,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="two"><div style="padding: 10px;">555555555</div></div>
+			<div class="two"><div style="padding: 10px;">左右切换</div></div>
 		</div>
 	</div>
 
@@ -59,11 +59,11 @@
 	$(function(){
 		$('button').on('click', function(){
 			$('.page').addClass('page-shift');
-		});
+		})
 
 		$('.two').on('click', function(){
 			$('.page').removeClass('page-shift');
-		});
+		})
 	});
 </script>
 
