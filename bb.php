@@ -31,7 +31,7 @@ Select a User:
 			$.ajax({
 				url: url,
 				method: 'POST',
-				data: { 'q':data, 's':'no'},
+				data: { q:data, s:'no'},
 				beforeSend: function(){}
 			}).done(function(result){
 				// alert(result);
