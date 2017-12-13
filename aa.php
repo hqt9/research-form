@@ -62,8 +62,9 @@
 				return;
 			}
 			$.ajax({
-				url: './gethint.php',
-				data: { 'q':str }
+				url: './aa_response.php',
+				// method: 'POST', //method默认为GET请求
+				data: { 'q':str}
 			}).done(function(result){
 				$("#input-name").text(result).addClass('input-names');
 			})

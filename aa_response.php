@@ -32,7 +32,7 @@ $a[]="Wenche";
 $a[]="Vicky";
 
 //获得来自 URL 的 q 参数
-$q = trim($_POST['q']);
+$q = trim($_GET['q']);
 // $q = 'e';
 $hint='';
 //如果 q 大于 0，则查找数组中的所有提示
